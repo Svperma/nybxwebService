@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.PolicyMainMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.PolicyMain" >
+    <id column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <result column="POLICY_NO" property="policyNo" jdbcType="VARCHAR" />
+    <result column="INSURANCE_TYPE" property="insuranceType" jdbcType="VARCHAR" />
+    <result column="RISK_CODE" property="riskCode" jdbcType="VARCHAR" />
+    <result column="POLICY_FLAG" property="policyFlag" jdbcType="VARCHAR" />
+    <result column="START_DATE" property="startDate" jdbcType="DATE" />
+    <result column="END_DATE" property="endDate" jdbcType="DATE" />
+    <result column="ARGUESOLUTION" property="arguesolution" jdbcType="VARCHAR" />
+    <result column="ARBITBOARD_NAME" property="arbitboardName" jdbcType="VARCHAR" />
+    <result column="INSURED_COUNT" property="insuredCount" jdbcType="VARCHAR" />
+    <result column="INSURED_QUANTITY" property="insuredQuantity" jdbcType="VARCHAR" />
+    <result column="SUM_AMOUNT" property="sumAmount" jdbcType="DECIMAL" />
+    <result column="SUM_PREMIUM" property="sumPremium" jdbcType="DECIMAL" />
+    <result column="POLICY_TYPE" property="policyType" jdbcType="VARCHAR" />
+    <result column="SIGN_DATE" property="signDate" jdbcType="DATE" />
+    <result column="SPECIAL_PROVISIONS" property="specialProvisions" jdbcType="VARCHAR" />
+    <result column="INSURER_CODE" property="insurerCode" jdbcType="VARCHAR" />
+    <result column="CENTRAL_ALLOWANCE" property="centralAllowance" jdbcType="DECIMAL" />
+    <result column="PROVINCE_ALLOWANCE" property="provinceAllowance" jdbcType="DECIMAL" />
+    <result column="CITY_ALLOWANCE" property="cityAllowance" jdbcType="DECIMAL" />
+    <result column="COUNTY_ALLOWANCE" property="countyAllowance" jdbcType="DECIMAL" />
+    <result column="PERSON_ALLOWANCE" property="personAllowance" jdbcType="DECIMAL" />
+    <result column="OTHER_ALLOWANCE" property="otherAllowance" jdbcType="DECIMAL" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="COUNTY" property="county" jdbcType="VARCHAR" />
+    <result column="TOWN" property="town" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESS_NO, POLICY_NO, INSURANCE_TYPE, RISK_CODE, POLICY_FLAG, START_DATE, END_DATE, 
+    ARGUESOLUTION, ARBITBOARD_NAME, INSURED_COUNT, INSURED_QUANTITY, SUM_AMOUNT, SUM_PREMIUM, 
+    POLICY_TYPE, SIGN_DATE, SPECIAL_PROVISIONS, INSURER_CODE, CENTRAL_ALLOWANCE, PROVINCE_ALLOWANCE, 
+    CITY_ALLOWANCE, COUNTY_ALLOWANCE, PERSON_ALLOWANCE, OTHER_ALLOWANCE, PROVINCE, CITY, 
+    COUNTY, TOWN
+  </sql>
+  <select id="findByPolicyNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from POLICYMAIN
+    where POLICY_NO = #{policyNo,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from POLICYMAIN
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from POLICYMAIN
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.PolicyMain" >
+    insert into POLICYMAIN (BUSINESS_NO, POLICY_NO, INSURANCE_TYPE, 
+      RISK_CODE, POLICY_FLAG, START_DATE, 
+      END_DATE, ARGUESOLUTION, ARBITBOARD_NAME, 
+      INSURED_COUNT, INSURED_QUANTITY, SUM_AMOUNT, 
+      SUM_PREMIUM, POLICY_TYPE, SIGN_DATE, 
+      SPECIAL_PROVISIONS, INSURER_CODE, CENTRAL_ALLOWANCE, 
+      PROVINCE_ALLOWANCE, CITY_ALLOWANCE, COUNTY_ALLOWANCE, 
+      PERSON_ALLOWANCE, OTHER_ALLOWANCE, PROVINCE, 
+      CITY, COUNTY, TOWN)
+    values (#{businessNo,jdbcType=VARCHAR}, #{policyNo,jdbcType=VARCHAR}, #{insuranceType,jdbcType=VARCHAR}, 
+      #{riskCode,jdbcType=VARCHAR}, #{policyFlag,jdbcType=VARCHAR}, #{startDate,jdbcType=DATE}, 
+      #{endDate,jdbcType=DATE}, #{arguesolution,jdbcType=VARCHAR}, #{arbitboardName,jdbcType=VARCHAR}, 
+      #{insuredCount,jdbcType=VARCHAR}, #{insuredQuantity,jdbcType=VARCHAR}, #{sumAmount,jdbcType=DECIMAL}, 
+      #{sumPremium,jdbcType=DECIMAL}, #{policyType,jdbcType=VARCHAR}, #{signDate,jdbcType=DATE}, 
+      #{specialProvisions,jdbcType=VARCHAR}, #{insurerCode,jdbcType=VARCHAR}, #{centralAllowance,jdbcType=DECIMAL}, 
+      #{provinceAllowance,jdbcType=DECIMAL}, #{cityAllowance,jdbcType=DECIMAL}, #{countyAllowance,jdbcType=DECIMAL}, 
+      #{personAllowance,jdbcType=DECIMAL}, #{otherAllowance,jdbcType=DECIMAL}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{town,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.PolicyMain" >
+    insert into POLICYMAIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="policyNo != null" >
+        POLICY_NO,
+      </if>
+      <if test="insuranceType != null" >
+        INSURANCE_TYPE,
+      </if>
+      <if test="riskCode != null" >
+        RISK_CODE,
+      </if>
+      <if test="policyFlag != null" >
+        POLICY_FLAG,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="arguesolution != null" >
+        ARGUESOLUTION,
+      </if>
+      <if test="arbitboardName != null" >
+        ARBITBOARD_NAME,
+      </if>
+      <if test="insuredCount != null" >
+        INSURED_COUNT,
+      </if>
+      <if test="insuredQuantity != null" >
+        INSURED_QUANTITY,
+      </if>
+      <if test="sumAmount != null" >
+        SUM_AMOUNT,
+      </if>
+      <if test="sumPremium != null" >
+        SUM_PREMIUM,
+      </if>
+      <if test="policyType != null" >
+        POLICY_TYPE,
+      </if>
+      <if test="signDate != null" >
+        SIGN_DATE,
+      </if>
+      <if test="specialProvisions != null" >
+        SPECIAL_PROVISIONS,
+      </if>
+      <if test="insurerCode != null" >
+        INSURER_CODE,
+      </if>
+      <if test="centralAllowance != null" >
+        CENTRAL_ALLOWANCE,
+      </if>
+      <if test="provinceAllowance != null" >
+        PROVINCE_ALLOWANCE,
+      </if>
+      <if test="cityAllowance != null" >
+        CITY_ALLOWANCE,
+      </if>
+      <if test="countyAllowance != null" >
+        COUNTY_ALLOWANCE,
+      </if>
+      <if test="personAllowance != null" >
+        PERSON_ALLOWANCE,
+      </if>
+      <if test="otherAllowance != null" >
+        OTHER_ALLOWANCE,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="county != null" >
+        COUNTY,
+      </if>
+      <if test="town != null" >
+        TOWN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceType != null" >
+        #{insuranceType,jdbcType=VARCHAR},
+      </if>
+      <if test="riskCode != null" >
+        #{riskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="policyFlag != null" >
+        #{policyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="arguesolution != null" >
+        #{arguesolution,jdbcType=VARCHAR},
+      </if>
+      <if test="arbitboardName != null" >
+        #{arbitboardName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCount != null" >
+        #{insuredCount,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredQuantity != null" >
+        #{insuredQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAmount != null" >
+        #{sumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sumPremium != null" >
+        #{sumPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="policyType != null" >
+        #{policyType,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null" >
+        #{signDate,jdbcType=DATE},
+      </if>
+      <if test="specialProvisions != null" >
+        #{specialProvisions,jdbcType=VARCHAR},
+      </if>
+      <if test="insurerCode != null" >
+        #{insurerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="centralAllowance != null" >
+        #{centralAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="provinceAllowance != null" >
+        #{provinceAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="cityAllowance != null" >
+        #{cityAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="countyAllowance != null" >
+        #{countyAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="personAllowance != null" >
+        #{personAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAllowance != null" >
+        #{otherAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.PolicyMain" >
+    update POLICYMAIN
+    <set >
+      <if test="policyNo != null" >
+        POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceType != null" >
+        INSURANCE_TYPE = #{insuranceType,jdbcType=VARCHAR},
+      </if>
+      <if test="riskCode != null" >
+        RISK_CODE = #{riskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="policyFlag != null" >
+        POLICY_FLAG = #{policyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="arguesolution != null" >
+        ARGUESOLUTION = #{arguesolution,jdbcType=VARCHAR},
+      </if>
+      <if test="arbitboardName != null" >
+        ARBITBOARD_NAME = #{arbitboardName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCount != null" >
+        INSURED_COUNT = #{insuredCount,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredQuantity != null" >
+        INSURED_QUANTITY = #{insuredQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAmount != null" >
+        SUM_AMOUNT = #{sumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sumPremium != null" >
+        SUM_PREMIUM = #{sumPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="policyType != null" >
+        POLICY_TYPE = #{policyType,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null" >
+        SIGN_DATE = #{signDate,jdbcType=DATE},
+      </if>
+      <if test="specialProvisions != null" >
+        SPECIAL_PROVISIONS = #{specialProvisions,jdbcType=VARCHAR},
+      </if>
+      <if test="insurerCode != null" >
+        INSURER_CODE = #{insurerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="centralAllowance != null" >
+        CENTRAL_ALLOWANCE = #{centralAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="provinceAllowance != null" >
+        PROVINCE_ALLOWANCE = #{provinceAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="cityAllowance != null" >
+        CITY_ALLOWANCE = #{cityAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="countyAllowance != null" >
+        COUNTY_ALLOWANCE = #{countyAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="personAllowance != null" >
+        PERSON_ALLOWANCE = #{personAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAllowance != null" >
+        OTHER_ALLOWANCE = #{otherAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        COUNTY = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        TOWN = #{town,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.PolicyMain" >
+    update POLICYMAIN
+    set POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      INSURANCE_TYPE = #{insuranceType,jdbcType=VARCHAR},
+      RISK_CODE = #{riskCode,jdbcType=VARCHAR},
+      POLICY_FLAG = #{policyFlag,jdbcType=VARCHAR},
+      START_DATE = #{startDate,jdbcType=DATE},
+      END_DATE = #{endDate,jdbcType=DATE},
+      ARGUESOLUTION = #{arguesolution,jdbcType=VARCHAR},
+      ARBITBOARD_NAME = #{arbitboardName,jdbcType=VARCHAR},
+      INSURED_COUNT = #{insuredCount,jdbcType=VARCHAR},
+      INSURED_QUANTITY = #{insuredQuantity,jdbcType=VARCHAR},
+      SUM_AMOUNT = #{sumAmount,jdbcType=DECIMAL},
+      SUM_PREMIUM = #{sumPremium,jdbcType=DECIMAL},
+      POLICY_TYPE = #{policyType,jdbcType=VARCHAR},
+      SIGN_DATE = #{signDate,jdbcType=DATE},
+      SPECIAL_PROVISIONS = #{specialProvisions,jdbcType=VARCHAR},
+      INSURER_CODE = #{insurerCode,jdbcType=VARCHAR},
+      CENTRAL_ALLOWANCE = #{centralAllowance,jdbcType=DECIMAL},
+      PROVINCE_ALLOWANCE = #{provinceAllowance,jdbcType=DECIMAL},
+      CITY_ALLOWANCE = #{cityAllowance,jdbcType=DECIMAL},
+      COUNTY_ALLOWANCE = #{countyAllowance,jdbcType=DECIMAL},
+      PERSON_ALLOWANCE = #{personAllowance,jdbcType=DECIMAL},
+      OTHER_ALLOWANCE = #{otherAllowance,jdbcType=DECIMAL},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      COUNTY = #{county,jdbcType=VARCHAR},
+      TOWN = #{town,jdbcType=VARCHAR}
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

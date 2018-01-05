@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.PolicyOrganizerMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.PolicyOrganizer" >
+    <id column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <result column="ORGANIZER_NAME" property="organizerName" jdbcType="VARCHAR" />
+    <result column="ORGANIZER_ADDRESS" property="organizerAddress" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_TYPE" property="identifyType" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_NUMBER" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="VARCHAR" />
+    <result column="CONTACT_NAME" property="contactName" jdbcType="VARCHAR" />
+    <result column="PHONE_NUMBER" property="phoneNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESS_NO, ORGANIZER_NAME, ORGANIZER_ADDRESS, IDENTIFY_TYPE, IDENTIFY_NUMBER, POST_CODE, 
+    CONTACT_NAME, PHONE_NUMBER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from POLICYORGANIZER
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from POLICYORGANIZER
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.PolicyOrganizer" >
+    insert into POLICYORGANIZER (BUSINESS_NO, ORGANIZER_NAME, ORGANIZER_ADDRESS, 
+      IDENTIFY_TYPE, IDENTIFY_NUMBER, POST_CODE, 
+      CONTACT_NAME, PHONE_NUMBER)
+    values (#{businessNo,jdbcType=VARCHAR}, #{organizerName,jdbcType=VARCHAR}, #{organizerAddress,jdbcType=VARCHAR}, 
+      #{identifyType,jdbcType=VARCHAR}, #{identifyNumber,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.PolicyOrganizer" >
+    insert into POLICYORGANIZER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="organizerName != null" >
+        ORGANIZER_NAME,
+      </if>
+      <if test="organizerAddress != null" >
+        ORGANIZER_ADDRESS,
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE,
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER,
+      </if>
+      <if test="postCode != null" >
+        POST_CODE,
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME,
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerName != null" >
+        #{organizerName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerAddress != null" >
+        #{organizerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.PolicyOrganizer" >
+    update POLICYORGANIZER
+    <set >
+      <if test="organizerName != null" >
+        ORGANIZER_NAME = #{organizerName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizerAddress != null" >
+        ORGANIZER_ADDRESS = #{organizerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        POST_CODE = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.PolicyOrganizer" >
+    update POLICYORGANIZER
+    set ORGANIZER_NAME = #{organizerName,jdbcType=VARCHAR},
+      ORGANIZER_ADDRESS = #{organizerAddress,jdbcType=VARCHAR},
+      IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      POST_CODE = #{postCode,jdbcType=VARCHAR},
+      CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR}
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.ClaimInsuredMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.ClaimInsured" >
+    <id column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <id column="INSURED_CODE" property="insuredCode" jdbcType="VARCHAR" />
+    <result column="INSURED_NAME" property="insuredName" jdbcType="VARCHAR" />
+    <result column="INSURED_ADDRESS" property="insuredAddress" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_TYPE" property="identifyType" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_NUMBER" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="PHONE_NUMBER" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="FARMER_TYPE" property="farmerType" jdbcType="VARCHAR" />
+    <result column="IS_POOR" property="isPoor" jdbcType="VARCHAR" />
+    <result column="COMPENSATION_AMOUNT" property="compensationAmount" jdbcType="DECIMAL" />
+    <result column="COMPENSATION" property="compensation" jdbcType="DECIMAL" />
+    <result column="INSURED_AMOUNT" property="insuredAmount" jdbcType="DECIMAL" />
+    <result column="COMPENSATION_QUANTITY" property="compensationQuantity" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESS_NO, INSURED_CODE, INSURED_NAME, INSURED_ADDRESS, IDENTIFY_TYPE, IDENTIFY_NUMBER, 
+    PHONE_NUMBER, FARMER_TYPE, IS_POOR, COMPENSATION_AMOUNT, COMPENSATION, INSURED_AMOUNT, 
+    COMPENSATION_QUANTITY
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dsib.entity.ClaimInsuredKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from CLAIMINSURED
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dsib.entity.ClaimInsuredKey" >
+    delete from CLAIMINSURED
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.ClaimInsured" >
+    insert into CLAIMINSURED (BUSINESS_NO, INSURED_CODE, INSURED_NAME, 
+      INSURED_ADDRESS, IDENTIFY_TYPE, IDENTIFY_NUMBER, 
+      PHONE_NUMBER, FARMER_TYPE, IS_POOR, 
+      COMPENSATION_AMOUNT, COMPENSATION, INSURED_AMOUNT, 
+      COMPENSATION_QUANTITY)
+    values (#{businessNo,jdbcType=VARCHAR}, #{insuredCode,jdbcType=VARCHAR}, #{insuredName,jdbcType=VARCHAR}, 
+      #{insuredAddress,jdbcType=VARCHAR}, #{identifyType,jdbcType=VARCHAR}, #{identifyNumber,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{farmerType,jdbcType=VARCHAR}, #{isPoor,jdbcType=VARCHAR}, 
+      #{compensationAmount,jdbcType=DECIMAL}, #{compensation,jdbcType=DECIMAL}, #{insuredAmount,jdbcType=DECIMAL}, 
+      #{compensationQuantity,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.ClaimInsured" >
+    insert into CLAIMINSURED
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="insuredCode != null" >
+        INSURED_CODE,
+      </if>
+      <if test="insuredName != null" >
+        INSURED_NAME,
+      </if>
+      <if test="insuredAddress != null" >
+        INSURED_ADDRESS,
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE,
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER,
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER,
+      </if>
+      <if test="farmerType != null" >
+        FARMER_TYPE,
+      </if>
+      <if test="isPoor != null" >
+        IS_POOR,
+      </if>
+      <if test="compensationAmount != null" >
+        COMPENSATION_AMOUNT,
+      </if>
+      <if test="compensation != null" >
+        COMPENSATION,
+      </if>
+      <if test="insuredAmount != null" >
+        INSURED_AMOUNT,
+      </if>
+      <if test="compensationQuantity != null" >
+        COMPENSATION_QUANTITY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCode != null" >
+        #{insuredCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredAddress != null" >
+        #{insuredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerType != null" >
+        #{farmerType,jdbcType=VARCHAR},
+      </if>
+      <if test="isPoor != null" >
+        #{isPoor,jdbcType=VARCHAR},
+      </if>
+      <if test="compensationAmount != null" >
+        #{compensationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensation != null" >
+        #{compensation,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredAmount != null" >
+        #{insuredAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensationQuantity != null" >
+        #{compensationQuantity,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.ClaimInsured" >
+    update CLAIMINSURED
+    <set >
+      <if test="insuredName != null" >
+        INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredAddress != null" >
+        INSURED_ADDRESS = #{insuredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerType != null" >
+        FARMER_TYPE = #{farmerType,jdbcType=VARCHAR},
+      </if>
+      <if test="isPoor != null" >
+        IS_POOR = #{isPoor,jdbcType=VARCHAR},
+      </if>
+      <if test="compensationAmount != null" >
+        COMPENSATION_AMOUNT = #{compensationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensation != null" >
+        COMPENSATION = #{compensation,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredAmount != null" >
+        INSURED_AMOUNT = #{insuredAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensationQuantity != null" >
+        COMPENSATION_QUANTITY = #{compensationQuantity,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.ClaimInsured" >
+    update CLAIMINSURED
+    set INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      INSURED_ADDRESS = #{insuredAddress,jdbcType=VARCHAR},
+      IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      FARMER_TYPE = #{farmerType,jdbcType=VARCHAR},
+      IS_POOR = #{isPoor,jdbcType=VARCHAR},
+      COMPENSATION_AMOUNT = #{compensationAmount,jdbcType=DECIMAL},
+      COMPENSATION = #{compensation,jdbcType=DECIMAL},
+      INSURED_AMOUNT = #{insuredAmount,jdbcType=DECIMAL},
+      COMPENSATION_QUANTITY = #{compensationQuantity,jdbcType=DECIMAL}
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

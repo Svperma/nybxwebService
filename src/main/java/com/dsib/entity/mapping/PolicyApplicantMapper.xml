@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.PolicyApplicantMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.PolicyApplicant" >
+    <id column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <result column="APPLI_NAME" property="appliName" jdbcType="VARCHAR" />
+    <result column="APPLI_ADDRESS" property="appliAddress" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_TYPE" property="identifyType" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_NUMBER" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="BIRTH_DAY" property="birthDay" jdbcType="DATE" />
+    <result column="AGE" property="age" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="INSURED_IDENTITY" property="insuredIdentity" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="VARCHAR" />
+    <result column="PHONE_NUMBER" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="INSURED_TYPE" property="insuredType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESS_NO, APPLI_NAME, APPLI_ADDRESS, IDENTIFY_TYPE, IDENTIFY_NUMBER, BIRTH_DAY, 
+    AGE, SEX, INSURED_IDENTITY, POST_CODE, PHONE_NUMBER, INSURED_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from POLICYAPPLICANT
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from POLICYAPPLICANT
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.PolicyApplicant" >
+    insert into POLICYAPPLICANT (BUSINESS_NO, APPLI_NAME, APPLI_ADDRESS, 
+      IDENTIFY_TYPE, IDENTIFY_NUMBER, BIRTH_DAY, 
+      AGE, SEX, INSURED_IDENTITY, 
+      POST_CODE, PHONE_NUMBER, INSURED_TYPE
+      )
+    values (#{businessNo,jdbcType=VARCHAR}, #{appliName,jdbcType=VARCHAR}, #{appliAddress,jdbcType=VARCHAR}, 
+      #{identifyType,jdbcType=VARCHAR}, #{identifyNumber,jdbcType=VARCHAR}, #{birthDay,jdbcType=DATE}, 
+      #{age,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{insuredIdentity,jdbcType=VARCHAR}, 
+      #{postCode,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{insuredType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.PolicyApplicant" >
+    insert into POLICYAPPLICANT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="appliName != null" >
+        APPLI_NAME,
+      </if>
+      <if test="appliAddress != null" >
+        APPLI_ADDRESS,
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE,
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER,
+      </if>
+      <if test="birthDay != null" >
+        BIRTH_DAY,
+      </if>
+      <if test="age != null" >
+        AGE,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="insuredIdentity != null" >
+        INSURED_IDENTITY,
+      </if>
+      <if test="postCode != null" >
+        POST_CODE,
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER,
+      </if>
+      <if test="insuredType != null" >
+        INSURED_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="appliName != null" >
+        #{appliName,jdbcType=VARCHAR},
+      </if>
+      <if test="appliAddress != null" >
+        #{appliAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDay != null" >
+        #{birthDay,jdbcType=DATE},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredIdentity != null" >
+        #{insuredIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null" >
+        #{insuredType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.PolicyApplicant" >
+    update POLICYAPPLICANT
+    <set >
+      <if test="appliName != null" >
+        APPLI_NAME = #{appliName,jdbcType=VARCHAR},
+      </if>
+      <if test="appliAddress != null" >
+        APPLI_ADDRESS = #{appliAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDay != null" >
+        BIRTH_DAY = #{birthDay,jdbcType=DATE},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredIdentity != null" >
+        INSURED_IDENTITY = #{insuredIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        POST_CODE = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null" >
+        INSURED_TYPE = #{insuredType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.PolicyApplicant" >
+    update POLICYAPPLICANT
+    set APPLI_NAME = #{appliName,jdbcType=VARCHAR},
+      APPLI_ADDRESS = #{appliAddress,jdbcType=VARCHAR},
+      IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      BIRTH_DAY = #{birthDay,jdbcType=DATE},
+      AGE = #{age,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      INSURED_IDENTITY = #{insuredIdentity,jdbcType=VARCHAR},
+      POST_CODE = #{postCode,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      INSURED_TYPE = #{insuredType,jdbcType=VARCHAR}
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

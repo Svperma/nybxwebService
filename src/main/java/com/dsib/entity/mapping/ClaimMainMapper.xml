@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.ClaimMainMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.ClaimMain" >
+    <id column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <result column="POLICY_NO" property="policyNo" jdbcType="VARCHAR" />
+    <result column="REPORT_NO" property="reportNo" jdbcType="VARCHAR" />
+    <result column="CASE_NO" property="caseNo" jdbcType="VARCHAR" />
+    <result column="CLAIMS_NO" property="claimsNo" jdbcType="VARCHAR" />
+    <result column="INSURANCE_TYPE" property="insuranceType" jdbcType="VARCHAR" />
+    <result column="RISK_CODE" property="riskCode" jdbcType="VARCHAR" />
+    <result column="POLICY_FLAG" property="policyFlag" jdbcType="VARCHAR" />
+    <result column="CLAIM_STATUS" property="claimStatus" jdbcType="VARCHAR" />
+    <result column="START_DATE" property="startDate" jdbcType="DATE" />
+    <result column="END_DATE" property="endDate" jdbcType="DATE" />
+    <result column="HAPPEN_DATE" property="happenDate" jdbcType="DATE" />
+    <result column="REPORT_DATE" property="reportDate" jdbcType="DATE" />
+    <result column="CASE_DATE" property="caseDate" jdbcType="DATE" />
+    <result column="PAY_DATE" property="payDate" jdbcType="DATE" />
+    <result column="COMPENSATION_AMOUNT" property="compensationAmount" jdbcType="DECIMAL" />
+    <result column="COMPENSATION" property="compensation" jdbcType="DECIMAL" />
+    <result column="INSURED_AMOUNT" property="insuredAmount" jdbcType="DECIMAL" />
+    <result column="COMPENSATION_QUANTITY" property="compensationQuantity" jdbcType="DECIMAL" />
+    <result column="INSURANCE_CODE" property="insuranceCode" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="COUNTY" property="county" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESS_NO, POLICY_NO, REPORT_NO, CASE_NO, CLAIMS_NO, INSURANCE_TYPE, RISK_CODE, 
+    POLICY_FLAG, CLAIM_STATUS, START_DATE, END_DATE, HAPPEN_DATE, REPORT_DATE, CASE_DATE, 
+    PAY_DATE, COMPENSATION_AMOUNT, COMPENSATION, INSURED_AMOUNT, COMPENSATION_QUANTITY, 
+    INSURANCE_CODE, PROVINCE, CITY, COUNTY
+  </sql>
+  <select id="findByReportNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CLAIMMAIN
+    where REPORT_NO = #{reportNo,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CLAIMMAIN
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CLAIMMAIN
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.ClaimMain" >
+    insert into CLAIMMAIN (BUSINESS_NO, POLICY_NO, REPORT_NO, 
+      CASE_NO, CLAIMS_NO, INSURANCE_TYPE, 
+      RISK_CODE, POLICY_FLAG, CLAIM_STATUS, 
+      START_DATE, END_DATE, HAPPEN_DATE, 
+      REPORT_DATE, CASE_DATE, PAY_DATE, 
+      COMPENSATION_AMOUNT, COMPENSATION, INSURED_AMOUNT, 
+      COMPENSATION_QUANTITY, INSURANCE_CODE, PROVINCE, 
+      CITY, COUNTY)
+    values (#{businessNo,jdbcType=VARCHAR}, #{policyNo,jdbcType=VARCHAR}, #{reportNo,jdbcType=VARCHAR}, 
+      #{caseNo,jdbcType=VARCHAR}, #{claimsNo,jdbcType=VARCHAR}, #{insuranceType,jdbcType=VARCHAR}, 
+      #{riskCode,jdbcType=VARCHAR}, #{policyFlag,jdbcType=VARCHAR}, #{claimStatus,jdbcType=VARCHAR}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{happenDate,jdbcType=DATE}, 
+      #{reportDate,jdbcType=DATE}, #{caseDate,jdbcType=DATE}, #{payDate,jdbcType=DATE}, 
+      #{compensationAmount,jdbcType=DECIMAL}, #{compensation,jdbcType=DECIMAL}, #{insuredAmount,jdbcType=DECIMAL}, 
+      #{compensationQuantity,jdbcType=DECIMAL}, #{insuranceCode,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.ClaimMain" >
+    insert into CLAIMMAIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="policyNo != null" >
+        POLICY_NO,
+      </if>
+      <if test="reportNo != null" >
+        REPORT_NO,
+      </if>
+      <if test="caseNo != null" >
+        CASE_NO,
+      </if>
+      <if test="claimsNo != null" >
+        CLAIMS_NO,
+      </if>
+      <if test="insuranceType != null" >
+        INSURANCE_TYPE,
+      </if>
+      <if test="riskCode != null" >
+        RISK_CODE,
+      </if>
+      <if test="policyFlag != null" >
+        POLICY_FLAG,
+      </if>
+      <if test="claimStatus != null" >
+        CLAIM_STATUS,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="happenDate != null" >
+        HAPPEN_DATE,
+      </if>
+      <if test="reportDate != null" >
+        REPORT_DATE,
+      </if>
+      <if test="caseDate != null" >
+        CASE_DATE,
+      </if>
+      <if test="payDate != null" >
+        PAY_DATE,
+      </if>
+      <if test="compensationAmount != null" >
+        COMPENSATION_AMOUNT,
+      </if>
+      <if test="compensation != null" >
+        COMPENSATION,
+      </if>
+      <if test="insuredAmount != null" >
+        INSURED_AMOUNT,
+      </if>
+      <if test="compensationQuantity != null" >
+        COMPENSATION_QUANTITY,
+      </if>
+      <if test="insuranceCode != null" >
+        INSURANCE_CODE,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="county != null" >
+        COUNTY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reportNo != null" >
+        #{reportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNo != null" >
+        #{caseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="claimsNo != null" >
+        #{claimsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceType != null" >
+        #{insuranceType,jdbcType=VARCHAR},
+      </if>
+      <if test="riskCode != null" >
+        #{riskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="policyFlag != null" >
+        #{policyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="claimStatus != null" >
+        #{claimStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="happenDate != null" >
+        #{happenDate,jdbcType=DATE},
+      </if>
+      <if test="reportDate != null" >
+        #{reportDate,jdbcType=DATE},
+      </if>
+      <if test="caseDate != null" >
+        #{caseDate,jdbcType=DATE},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=DATE},
+      </if>
+      <if test="compensationAmount != null" >
+        #{compensationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensation != null" >
+        #{compensation,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredAmount != null" >
+        #{insuredAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensationQuantity != null" >
+        #{compensationQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceCode != null" >
+        #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.ClaimMain" >
+    update CLAIMMAIN
+    <set >
+      <if test="policyNo != null" >
+        POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reportNo != null" >
+        REPORT_NO = #{reportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNo != null" >
+        CASE_NO = #{caseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="claimsNo != null" >
+        CLAIMS_NO = #{claimsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceType != null" >
+        INSURANCE_TYPE = #{insuranceType,jdbcType=VARCHAR},
+      </if>
+      <if test="riskCode != null" >
+        RISK_CODE = #{riskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="policyFlag != null" >
+        POLICY_FLAG = #{policyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="claimStatus != null" >
+        CLAIM_STATUS = #{claimStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        START_DATE = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        END_DATE = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="happenDate != null" >
+        HAPPEN_DATE = #{happenDate,jdbcType=DATE},
+      </if>
+      <if test="reportDate != null" >
+        REPORT_DATE = #{reportDate,jdbcType=DATE},
+      </if>
+      <if test="caseDate != null" >
+        CASE_DATE = #{caseDate,jdbcType=DATE},
+      </if>
+      <if test="payDate != null" >
+        PAY_DATE = #{payDate,jdbcType=DATE},
+      </if>
+      <if test="compensationAmount != null" >
+        COMPENSATION_AMOUNT = #{compensationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensation != null" >
+        COMPENSATION = #{compensation,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredAmount != null" >
+        INSURED_AMOUNT = #{insuredAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compensationQuantity != null" >
+        COMPENSATION_QUANTITY = #{compensationQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceCode != null" >
+        INSURANCE_CODE = #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        COUNTY = #{county,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.ClaimMain" >
+    update CLAIMMAIN
+    set POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      REPORT_NO = #{reportNo,jdbcType=VARCHAR},
+      CASE_NO = #{caseNo,jdbcType=VARCHAR},
+      CLAIMS_NO = #{claimsNo,jdbcType=VARCHAR},
+      INSURANCE_TYPE = #{insuranceType,jdbcType=VARCHAR},
+      RISK_CODE = #{riskCode,jdbcType=VARCHAR},
+      POLICY_FLAG = #{policyFlag,jdbcType=VARCHAR},
+      CLAIM_STATUS = #{claimStatus,jdbcType=VARCHAR},
+      START_DATE = #{startDate,jdbcType=DATE},
+      END_DATE = #{endDate,jdbcType=DATE},
+      HAPPEN_DATE = #{happenDate,jdbcType=DATE},
+      REPORT_DATE = #{reportDate,jdbcType=DATE},
+      CASE_DATE = #{caseDate,jdbcType=DATE},
+      PAY_DATE = #{payDate,jdbcType=DATE},
+      COMPENSATION_AMOUNT = #{compensationAmount,jdbcType=DECIMAL},
+      COMPENSATION = #{compensation,jdbcType=DECIMAL},
+      INSURED_AMOUNT = #{insuredAmount,jdbcType=DECIMAL},
+      COMPENSATION_QUANTITY = #{compensationQuantity,jdbcType=DECIMAL},
+      INSURANCE_CODE = #{insuranceCode,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      COUNTY = #{county,jdbcType=VARCHAR}
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

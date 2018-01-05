@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.PolicyItemKindMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.PolicyItemKind" >
+    <id column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <id column="ITEM_KIND_NO" property="itemKindNo" jdbcType="VARCHAR" />
+    <result column="ITEM_TYPE" property="itemType" jdbcType="VARCHAR" />
+    <result column="ITEM_TYPE_NAME" property="itemTypeName" jdbcType="VARCHAR" />
+    <result column="KIND_CODE" property="kindCode" jdbcType="VARCHAR" />
+    <result column="KIND_NAME" property="kindName" jdbcType="VARCHAR" />
+    <result column="UNIT" property="unit" jdbcType="VARCHAR" />
+    <result column="QUANTITY" property="quantity" jdbcType="DECIMAL" />
+    <result column="UNIT_AMOUNT" property="unitAmount" jdbcType="DECIMAL" />
+    <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+    <result column="INSURANCE_RATES" property="insuranceRates" jdbcType="DECIMAL" />
+    <result column="PREMIUM" property="premium" jdbcType="DECIMAL" />
+    <result column="FLAG" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESS_NO, ITEM_KIND_NO, ITEM_TYPE, ITEM_TYPE_NAME, KIND_CODE, KIND_NAME, UNIT, 
+    QUANTITY, UNIT_AMOUNT, AMOUNT, INSURANCE_RATES, PREMIUM, FLAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dsib.entity.PolicyItemKindKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from POLICYITEMKIND
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and ITEM_KIND_NO = #{itemKindNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dsib.entity.PolicyItemKindKey" >
+    delete from POLICYITEMKIND
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and ITEM_KIND_NO = #{itemKindNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.PolicyItemKind" >
+    insert into POLICYITEMKIND (BUSINESS_NO, ITEM_KIND_NO, ITEM_TYPE, 
+      ITEM_TYPE_NAME, KIND_CODE, KIND_NAME, 
+      UNIT, QUANTITY, UNIT_AMOUNT, 
+      AMOUNT, INSURANCE_RATES, PREMIUM, 
+      FLAG)
+    values (#{businessNo,jdbcType=VARCHAR}, #{itemKindNo,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, 
+      #{itemTypeName,jdbcType=VARCHAR}, #{kindCode,jdbcType=VARCHAR}, #{kindName,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR}, #{quantity,jdbcType=DECIMAL}, #{unitAmount,jdbcType=DECIMAL}, 
+      #{amount,jdbcType=DECIMAL}, #{insuranceRates,jdbcType=DECIMAL}, #{premium,jdbcType=DECIMAL}, 
+      #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.PolicyItemKind" >
+    insert into POLICYITEMKIND
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="itemKindNo != null" >
+        ITEM_KIND_NO,
+      </if>
+      <if test="itemType != null" >
+        ITEM_TYPE,
+      </if>
+      <if test="itemTypeName != null" >
+        ITEM_TYPE_NAME,
+      </if>
+      <if test="kindCode != null" >
+        KIND_CODE,
+      </if>
+      <if test="kindName != null" >
+        KIND_NAME,
+      </if>
+      <if test="unit != null" >
+        UNIT,
+      </if>
+      <if test="quantity != null" >
+        QUANTITY,
+      </if>
+      <if test="unitAmount != null" >
+        UNIT_AMOUNT,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="insuranceRates != null" >
+        INSURANCE_RATES,
+      </if>
+      <if test="premium != null" >
+        PREMIUM,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemKindNo != null" >
+        #{itemKindNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="itemTypeName != null" >
+        #{itemTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="kindCode != null" >
+        #{kindCode,jdbcType=VARCHAR},
+      </if>
+      <if test="kindName != null" >
+        #{kindName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="unitAmount != null" >
+        #{unitAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceRates != null" >
+        #{insuranceRates,jdbcType=DECIMAL},
+      </if>
+      <if test="premium != null" >
+        #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.PolicyItemKind" >
+    update POLICYITEMKIND
+    <set >
+      <if test="itemType != null" >
+        ITEM_TYPE = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="itemTypeName != null" >
+        ITEM_TYPE_NAME = #{itemTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="kindCode != null" >
+        KIND_CODE = #{kindCode,jdbcType=VARCHAR},
+      </if>
+      <if test="kindName != null" >
+        KIND_NAME = #{kindName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        UNIT = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        QUANTITY = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="unitAmount != null" >
+        UNIT_AMOUNT = #{unitAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceRates != null" >
+        INSURANCE_RATES = #{insuranceRates,jdbcType=DECIMAL},
+      </if>
+      <if test="premium != null" >
+        PREMIUM = #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and ITEM_KIND_NO = #{itemKindNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.PolicyItemKind" >
+    update POLICYITEMKIND
+    set ITEM_TYPE = #{itemType,jdbcType=VARCHAR},
+      ITEM_TYPE_NAME = #{itemTypeName,jdbcType=VARCHAR},
+      KIND_CODE = #{kindCode,jdbcType=VARCHAR},
+      KIND_NAME = #{kindName,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR},
+      QUANTITY = #{quantity,jdbcType=DECIMAL},
+      UNIT_AMOUNT = #{unitAmount,jdbcType=DECIMAL},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      INSURANCE_RATES = #{insuranceRates,jdbcType=DECIMAL},
+      PREMIUM = #{premium,jdbcType=DECIMAL},
+      FLAG = #{flag,jdbcType=VARCHAR}
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and ITEM_KIND_NO = #{itemKindNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

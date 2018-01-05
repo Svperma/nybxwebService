@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.Jg_GuPolicyMainMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.Jg_GuPolicyMain" >
+    <id column="BUSINESSNO" property="businessno" jdbcType="VARCHAR" />
+    <result column="PLANCODE" property="plancode" jdbcType="VARCHAR" />
+    <result column="PROPOSALNO" property="proposalno" jdbcType="VARCHAR" />
+    <result column="POLICYNO" property="policyno" jdbcType="VARCHAR" />
+    <result column="RISKCODE" property="riskcode" jdbcType="VARCHAR" />
+    <result column="CLASSCODE" property="classcode" jdbcType="VARCHAR" />
+    <result column="INSURERCODE" property="insurercode" jdbcType="VARCHAR" />
+    <result column="STARTDATE" property="startdate" jdbcType="DATE" />
+    <result column="ENDDATE" property="enddate" jdbcType="DATE" />
+    <result column="SIGNDATE" property="signdate" jdbcType="DATE" />
+    <result column="SPREADSHEETPREMIUM" property="spreadsheetpremium" jdbcType="DECIMAL" />
+    <result column="ACTUALPREMIUM" property="actualpremium" jdbcType="DECIMAL" />
+    <result column="QUANTITY" property="quantity" jdbcType="DECIMAL" />
+    <result column="PERSONPREMIUM" property="personpremium" jdbcType="DECIMAL" />
+    <result column="SUMAMOUNT" property="sumamount" jdbcType="DECIMAL" />
+    <result column="DISCOUNT" property="discount" jdbcType="DECIMAL" />
+    <result column="SUMDISCOUNT" property="sumdiscount" jdbcType="DECIMAL" />
+    <result column="SUMSUBPREM" property="sumsubprem" jdbcType="DECIMAL" />
+    <result column="COUNTY" property="county" jdbcType="VARCHAR" />
+    <result column="SPECIALPROVISIONS" property="specialprovisions" jdbcType="VARCHAR" />
+    <result column="TOWN" property="town" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="ARGUESOLUTION" property="arguesolution" jdbcType="VARCHAR" />
+    <result column="ARBITBOARDNAME" property="arbitboardname" jdbcType="VARCHAR" />
+    <result column="ENDORSETIMES" property="endorsetimes" jdbcType="DECIMAL" />
+    <result column="RENEWALFLAG" property="renewalflag" jdbcType="VARCHAR" />
+    <result column="PREVIOUSPOLICYNO" property="previouspolicyno" jdbcType="VARCHAR" />
+    <result column="PAYFLAG" property="payflag" jdbcType="VARCHAR" />
+    <result column="PAYBILLNO" property="paybillno" jdbcType="VARCHAR" />
+    <result column="MEMBERID" property="memberid" jdbcType="VARCHAR" />
+    <result column="INPUTDATE" property="inputdate" jdbcType="DATE" />
+    <result column="UNDERWRITECODE" property="underwritecode" jdbcType="VARCHAR" />
+    <result column="UNDERWRITEENDDATE" property="underwriteenddate" jdbcType="DATE" />
+    <result column="UNDERDIRECTIONS" property="underdirections" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="UPDATECODE" property="updatecode" jdbcType="VARCHAR" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="DATE" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="VILLAGE" property="village" jdbcType="VARCHAR" />
+    <result column="AGRICULTURECODE" property="agriculturecode" jdbcType="VARCHAR" />
+    <result column="MEMBERNAME" property="membername" jdbcType="VARCHAR" />
+    <result column="MEMBERADDRESS" property="memberaddress" jdbcType="VARCHAR" />
+    <result column="IDENTITYNO" property="identityno" jdbcType="VARCHAR" />
+    <result column="PLANTAREA" property="plantarea" jdbcType="VARCHAR" />
+    <result column="CENTRALALLOWANCE" property="centralallowance" jdbcType="DECIMAL" />
+    <result column="PROVINCEALLOWANCE" property="provinceallowance" jdbcType="DECIMAL" />
+    <result column="CITYALLOWANCE" property="cityallowance" jdbcType="DECIMAL" />
+    <result column="COUNTYALLOWANCE" property="countyallowance" jdbcType="DECIMAL" />
+    <result column="PERSONALLOWANCE" property="personallowance" jdbcType="DECIMAL" />
+    <result column="OHTERALLOWANCE" property="ohterallowance" jdbcType="DECIMAL" />
+    <result column="ISPOOR" property="ispoor" jdbcType="VARCHAR" />
+    <result column="FARMERTYPE" property="farmertype" jdbcType="VARCHAR" />
+    <result column="INSUREDCOUNT" property="insuredcount" jdbcType="VARCHAR" />
+    <result column="ORGANIZERNAME" property="organizername" jdbcType="VARCHAR" />
+    <result column="IDENTIFYTYPE" property="identifytype" jdbcType="VARCHAR" />
+    <result column="IDENTIFYNUMBER" property="identifynumber" jdbcType="VARCHAR" />
+    <result column="CONTACTNAME" property="contactname" jdbcType="VARCHAR" />
+    <result column="PHONENUMBER" property="phonenumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESSNO, PLANCODE, PROPOSALNO, POLICYNO, RISKCODE, CLASSCODE, INSURERCODE, STARTDATE, 
+    ENDDATE, SIGNDATE, SPREADSHEETPREMIUM, ACTUALPREMIUM, QUANTITY, PERSONPREMIUM, SUMAMOUNT, 
+    DISCOUNT, SUMDISCOUNT, SUMSUBPREM, COUNTY, SPECIALPROVISIONS, TOWN, CITY, PROVINCE, 
+    ARGUESOLUTION, ARBITBOARDNAME, ENDORSETIMES, RENEWALFLAG, PREVIOUSPOLICYNO, PAYFLAG, 
+    PAYBILLNO, MEMBERID, INPUTDATE, UNDERWRITECODE, UNDERWRITEENDDATE, UNDERDIRECTIONS, 
+    STATUS, UPDATECODE, UPDATETIME, REMARK, VILLAGE, AGRICULTURECODE, MEMBERNAME, MEMBERADDRESS, 
+    IDENTITYNO, PLANTAREA, CENTRALALLOWANCE, PROVINCEALLOWANCE, CITYALLOWANCE, COUNTYALLOWANCE, 
+    PERSONALLOWANCE, OHTERALLOWANCE, ISPOOR, FARMERTYPE, INSUREDCOUNT, ORGANIZERNAME, 
+    IDENTIFYTYPE, IDENTIFYNUMBER, CONTACTNAME, PHONENUMBER
+  </sql>
+  <select id="findByPolicyNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from JG_GUPOLICYMAIN
+    where POLICYNO = #{policyNo,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from JG_GUPOLICYMAIN
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from JG_GUPOLICYMAIN
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.Jg_GuPolicyMain" >
+    insert into JG_GUPOLICYMAIN (BUSINESSNO, PLANCODE, PROPOSALNO, 
+      POLICYNO, RISKCODE, CLASSCODE, 
+      INSURERCODE, STARTDATE, ENDDATE, 
+      SIGNDATE, SPREADSHEETPREMIUM, ACTUALPREMIUM, 
+      QUANTITY, PERSONPREMIUM, SUMAMOUNT, 
+      DISCOUNT, SUMDISCOUNT, SUMSUBPREM, 
+      COUNTY, SPECIALPROVISIONS, TOWN, 
+      CITY, PROVINCE, ARGUESOLUTION, 
+      ARBITBOARDNAME, ENDORSETIMES, RENEWALFLAG, 
+      PREVIOUSPOLICYNO, PAYFLAG, PAYBILLNO, 
+      MEMBERID, INPUTDATE, UNDERWRITECODE, 
+      UNDERWRITEENDDATE, UNDERDIRECTIONS, STATUS, 
+      UPDATECODE, UPDATETIME, REMARK, 
+      VILLAGE, AGRICULTURECODE, MEMBERNAME, 
+      MEMBERADDRESS, IDENTITYNO, PLANTAREA, 
+      CENTRALALLOWANCE, PROVINCEALLOWANCE, CITYALLOWANCE, 
+      COUNTYALLOWANCE, PERSONALLOWANCE, OHTERALLOWANCE, 
+      ISPOOR, FARMERTYPE, INSUREDCOUNT, 
+      ORGANIZERNAME, IDENTIFYTYPE, IDENTIFYNUMBER, 
+      CONTACTNAME, PHONENUMBER)
+    values (#{businessno,jdbcType=VARCHAR}, #{plancode,jdbcType=VARCHAR}, #{proposalno,jdbcType=VARCHAR}, 
+      #{policyno,jdbcType=VARCHAR}, #{riskcode,jdbcType=VARCHAR}, #{classcode,jdbcType=VARCHAR}, 
+      #{insurercode,jdbcType=VARCHAR}, #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE}, 
+      #{signdate,jdbcType=DATE}, #{spreadsheetpremium,jdbcType=DECIMAL}, #{actualpremium,jdbcType=DECIMAL}, 
+      #{quantity,jdbcType=DECIMAL}, #{personpremium,jdbcType=DECIMAL}, #{sumamount,jdbcType=DECIMAL}, 
+      #{discount,jdbcType=DECIMAL}, #{sumdiscount,jdbcType=DECIMAL}, #{sumsubprem,jdbcType=DECIMAL}, 
+      #{county,jdbcType=VARCHAR}, #{specialprovisions,jdbcType=VARCHAR}, #{town,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{arguesolution,jdbcType=VARCHAR}, 
+      #{arbitboardname,jdbcType=VARCHAR}, #{endorsetimes,jdbcType=DECIMAL}, #{renewalflag,jdbcType=VARCHAR}, 
+      #{previouspolicyno,jdbcType=VARCHAR}, #{payflag,jdbcType=VARCHAR}, #{paybillno,jdbcType=VARCHAR}, 
+      #{memberid,jdbcType=VARCHAR}, #{inputdate,jdbcType=DATE}, #{underwritecode,jdbcType=VARCHAR}, 
+      #{underwriteenddate,jdbcType=DATE}, #{underdirections,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{updatecode,jdbcType=VARCHAR}, #{updatetime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, 
+      #{village,jdbcType=VARCHAR}, #{agriculturecode,jdbcType=VARCHAR}, #{membername,jdbcType=VARCHAR}, 
+      #{memberaddress,jdbcType=VARCHAR}, #{identityno,jdbcType=VARCHAR}, #{plantarea,jdbcType=VARCHAR}, 
+      #{centralallowance,jdbcType=DECIMAL}, #{provinceallowance,jdbcType=DECIMAL}, #{cityallowance,jdbcType=DECIMAL}, 
+      #{countyallowance,jdbcType=DECIMAL}, #{personallowance,jdbcType=DECIMAL}, #{ohterallowance,jdbcType=DECIMAL}, 
+      #{ispoor,jdbcType=VARCHAR}, #{farmertype,jdbcType=VARCHAR}, #{insuredcount,jdbcType=VARCHAR}, 
+      #{organizername,jdbcType=VARCHAR}, #{identifytype,jdbcType=VARCHAR}, #{identifynumber,jdbcType=VARCHAR}, 
+      #{contactname,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.Jg_GuPolicyMain" >
+    insert into JG_GUPOLICYMAIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessno != null" >
+        BUSINESSNO,
+      </if>
+      <if test="plancode != null" >
+        PLANCODE,
+      </if>
+      <if test="proposalno != null" >
+        PROPOSALNO,
+      </if>
+      <if test="policyno != null" >
+        POLICYNO,
+      </if>
+      <if test="riskcode != null" >
+        RISKCODE,
+      </if>
+      <if test="classcode != null" >
+        CLASSCODE,
+      </if>
+      <if test="insurercode != null" >
+        INSURERCODE,
+      </if>
+      <if test="startdate != null" >
+        STARTDATE,
+      </if>
+      <if test="enddate != null" >
+        ENDDATE,
+      </if>
+      <if test="signdate != null" >
+        SIGNDATE,
+      </if>
+      <if test="spreadsheetpremium != null" >
+        SPREADSHEETPREMIUM,
+      </if>
+      <if test="actualpremium != null" >
+        ACTUALPREMIUM,
+      </if>
+      <if test="quantity != null" >
+        QUANTITY,
+      </if>
+      <if test="personpremium != null" >
+        PERSONPREMIUM,
+      </if>
+      <if test="sumamount != null" >
+        SUMAMOUNT,
+      </if>
+      <if test="discount != null" >
+        DISCOUNT,
+      </if>
+      <if test="sumdiscount != null" >
+        SUMDISCOUNT,
+      </if>
+      <if test="sumsubprem != null" >
+        SUMSUBPREM,
+      </if>
+      <if test="county != null" >
+        COUNTY,
+      </if>
+      <if test="specialprovisions != null" >
+        SPECIALPROVISIONS,
+      </if>
+      <if test="town != null" >
+        TOWN,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="arguesolution != null" >
+        ARGUESOLUTION,
+      </if>
+      <if test="arbitboardname != null" >
+        ARBITBOARDNAME,
+      </if>
+      <if test="endorsetimes != null" >
+        ENDORSETIMES,
+      </if>
+      <if test="renewalflag != null" >
+        RENEWALFLAG,
+      </if>
+      <if test="previouspolicyno != null" >
+        PREVIOUSPOLICYNO,
+      </if>
+      <if test="payflag != null" >
+        PAYFLAG,
+      </if>
+      <if test="paybillno != null" >
+        PAYBILLNO,
+      </if>
+      <if test="memberid != null" >
+        MEMBERID,
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE,
+      </if>
+      <if test="underwritecode != null" >
+        UNDERWRITECODE,
+      </if>
+      <if test="underwriteenddate != null" >
+        UNDERWRITEENDDATE,
+      </if>
+      <if test="underdirections != null" >
+        UNDERDIRECTIONS,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="updatecode != null" >
+        UPDATECODE,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="village != null" >
+        VILLAGE,
+      </if>
+      <if test="agriculturecode != null" >
+        AGRICULTURECODE,
+      </if>
+      <if test="membername != null" >
+        MEMBERNAME,
+      </if>
+      <if test="memberaddress != null" >
+        MEMBERADDRESS,
+      </if>
+      <if test="identityno != null" >
+        IDENTITYNO,
+      </if>
+      <if test="plantarea != null" >
+        PLANTAREA,
+      </if>
+      <if test="centralallowance != null" >
+        CENTRALALLOWANCE,
+      </if>
+      <if test="provinceallowance != null" >
+        PROVINCEALLOWANCE,
+      </if>
+      <if test="cityallowance != null" >
+        CITYALLOWANCE,
+      </if>
+      <if test="countyallowance != null" >
+        COUNTYALLOWANCE,
+      </if>
+      <if test="personallowance != null" >
+        PERSONALLOWANCE,
+      </if>
+      <if test="ohterallowance != null" >
+        OHTERALLOWANCE,
+      </if>
+      <if test="ispoor != null" >
+        ISPOOR,
+      </if>
+      <if test="farmertype != null" >
+        FARMERTYPE,
+      </if>
+      <if test="insuredcount != null" >
+        INSUREDCOUNT,
+      </if>
+      <if test="organizername != null" >
+        ORGANIZERNAME,
+      </if>
+      <if test="identifytype != null" >
+        IDENTIFYTYPE,
+      </if>
+      <if test="identifynumber != null" >
+        IDENTIFYNUMBER,
+      </if>
+      <if test="contactname != null" >
+        CONTACTNAME,
+      </if>
+      <if test="phonenumber != null" >
+        PHONENUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessno != null" >
+        #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="plancode != null" >
+        #{plancode,jdbcType=VARCHAR},
+      </if>
+      <if test="proposalno != null" >
+        #{proposalno,jdbcType=VARCHAR},
+      </if>
+      <if test="policyno != null" >
+        #{policyno,jdbcType=VARCHAR},
+      </if>
+      <if test="riskcode != null" >
+        #{riskcode,jdbcType=VARCHAR},
+      </if>
+      <if test="classcode != null" >
+        #{classcode,jdbcType=VARCHAR},
+      </if>
+      <if test="insurercode != null" >
+        #{insurercode,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+      <if test="signdate != null" >
+        #{signdate,jdbcType=DATE},
+      </if>
+      <if test="spreadsheetpremium != null" >
+        #{spreadsheetpremium,jdbcType=DECIMAL},
+      </if>
+      <if test="actualpremium != null" >
+        #{actualpremium,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="personpremium != null" >
+        #{personpremium,jdbcType=DECIMAL},
+      </if>
+      <if test="sumamount != null" >
+        #{sumamount,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="sumdiscount != null" >
+        #{sumdiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sumsubprem != null" >
+        #{sumsubprem,jdbcType=DECIMAL},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="specialprovisions != null" >
+        #{specialprovisions,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="arguesolution != null" >
+        #{arguesolution,jdbcType=VARCHAR},
+      </if>
+      <if test="arbitboardname != null" >
+        #{arbitboardname,jdbcType=VARCHAR},
+      </if>
+      <if test="endorsetimes != null" >
+        #{endorsetimes,jdbcType=DECIMAL},
+      </if>
+      <if test="renewalflag != null" >
+        #{renewalflag,jdbcType=VARCHAR},
+      </if>
+      <if test="previouspolicyno != null" >
+        #{previouspolicyno,jdbcType=VARCHAR},
+      </if>
+      <if test="payflag != null" >
+        #{payflag,jdbcType=VARCHAR},
+      </if>
+      <if test="paybillno != null" >
+        #{paybillno,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        #{inputdate,jdbcType=DATE},
+      </if>
+      <if test="underwritecode != null" >
+        #{underwritecode,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteenddate != null" >
+        #{underwriteenddate,jdbcType=DATE},
+      </if>
+      <if test="underdirections != null" >
+        #{underdirections,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="updatecode != null" >
+        #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="agriculturecode != null" >
+        #{agriculturecode,jdbcType=VARCHAR},
+      </if>
+      <if test="membername != null" >
+        #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberaddress != null" >
+        #{memberaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identityno != null" >
+        #{identityno,jdbcType=VARCHAR},
+      </if>
+      <if test="plantarea != null" >
+        #{plantarea,jdbcType=VARCHAR},
+      </if>
+      <if test="centralallowance != null" >
+        #{centralallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="provinceallowance != null" >
+        #{provinceallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="cityallowance != null" >
+        #{cityallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="countyallowance != null" >
+        #{countyallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="personallowance != null" >
+        #{personallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="ohterallowance != null" >
+        #{ohterallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="ispoor != null" >
+        #{ispoor,jdbcType=VARCHAR},
+      </if>
+      <if test="farmertype != null" >
+        #{farmertype,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredcount != null" >
+        #{insuredcount,jdbcType=VARCHAR},
+      </if>
+      <if test="organizername != null" >
+        #{organizername,jdbcType=VARCHAR},
+      </if>
+      <if test="identifytype != null" >
+        #{identifytype,jdbcType=VARCHAR},
+      </if>
+      <if test="identifynumber != null" >
+        #{identifynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.Jg_GuPolicyMain" >
+    update JG_GUPOLICYMAIN
+    <set >
+      <if test="plancode != null" >
+        PLANCODE = #{plancode,jdbcType=VARCHAR},
+      </if>
+      <if test="proposalno != null" >
+        PROPOSALNO = #{proposalno,jdbcType=VARCHAR},
+      </if>
+      <if test="policyno != null" >
+        POLICYNO = #{policyno,jdbcType=VARCHAR},
+      </if>
+      <if test="riskcode != null" >
+        RISKCODE = #{riskcode,jdbcType=VARCHAR},
+      </if>
+      <if test="classcode != null" >
+        CLASSCODE = #{classcode,jdbcType=VARCHAR},
+      </if>
+      <if test="insurercode != null" >
+        INSURERCODE = #{insurercode,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        STARTDATE = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        ENDDATE = #{enddate,jdbcType=DATE},
+      </if>
+      <if test="signdate != null" >
+        SIGNDATE = #{signdate,jdbcType=DATE},
+      </if>
+      <if test="spreadsheetpremium != null" >
+        SPREADSHEETPREMIUM = #{spreadsheetpremium,jdbcType=DECIMAL},
+      </if>
+      <if test="actualpremium != null" >
+        ACTUALPREMIUM = #{actualpremium,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null" >
+        QUANTITY = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="personpremium != null" >
+        PERSONPREMIUM = #{personpremium,jdbcType=DECIMAL},
+      </if>
+      <if test="sumamount != null" >
+        SUMAMOUNT = #{sumamount,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null" >
+        DISCOUNT = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="sumdiscount != null" >
+        SUMDISCOUNT = #{sumdiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="sumsubprem != null" >
+        SUMSUBPREM = #{sumsubprem,jdbcType=DECIMAL},
+      </if>
+      <if test="county != null" >
+        COUNTY = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="specialprovisions != null" >
+        SPECIALPROVISIONS = #{specialprovisions,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        TOWN = #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="arguesolution != null" >
+        ARGUESOLUTION = #{arguesolution,jdbcType=VARCHAR},
+      </if>
+      <if test="arbitboardname != null" >
+        ARBITBOARDNAME = #{arbitboardname,jdbcType=VARCHAR},
+      </if>
+      <if test="endorsetimes != null" >
+        ENDORSETIMES = #{endorsetimes,jdbcType=DECIMAL},
+      </if>
+      <if test="renewalflag != null" >
+        RENEWALFLAG = #{renewalflag,jdbcType=VARCHAR},
+      </if>
+      <if test="previouspolicyno != null" >
+        PREVIOUSPOLICYNO = #{previouspolicyno,jdbcType=VARCHAR},
+      </if>
+      <if test="payflag != null" >
+        PAYFLAG = #{payflag,jdbcType=VARCHAR},
+      </if>
+      <if test="paybillno != null" >
+        PAYBILLNO = #{paybillno,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        MEMBERID = #{memberid,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE = #{inputdate,jdbcType=DATE},
+      </if>
+      <if test="underwritecode != null" >
+        UNDERWRITECODE = #{underwritecode,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteenddate != null" >
+        UNDERWRITEENDDATE = #{underwriteenddate,jdbcType=DATE},
+      </if>
+      <if test="underdirections != null" >
+        UNDERDIRECTIONS = #{underdirections,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="updatecode != null" >
+        UPDATECODE = #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        VILLAGE = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="agriculturecode != null" >
+        AGRICULTURECODE = #{agriculturecode,jdbcType=VARCHAR},
+      </if>
+      <if test="membername != null" >
+        MEMBERNAME = #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberaddress != null" >
+        MEMBERADDRESS = #{memberaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identityno != null" >
+        IDENTITYNO = #{identityno,jdbcType=VARCHAR},
+      </if>
+      <if test="plantarea != null" >
+        PLANTAREA = #{plantarea,jdbcType=VARCHAR},
+      </if>
+      <if test="centralallowance != null" >
+        CENTRALALLOWANCE = #{centralallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="provinceallowance != null" >
+        PROVINCEALLOWANCE = #{provinceallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="cityallowance != null" >
+        CITYALLOWANCE = #{cityallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="countyallowance != null" >
+        COUNTYALLOWANCE = #{countyallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="personallowance != null" >
+        PERSONALLOWANCE = #{personallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="ohterallowance != null" >
+        OHTERALLOWANCE = #{ohterallowance,jdbcType=DECIMAL},
+      </if>
+      <if test="ispoor != null" >
+        ISPOOR = #{ispoor,jdbcType=VARCHAR},
+      </if>
+      <if test="farmertype != null" >
+        FARMERTYPE = #{farmertype,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredcount != null" >
+        INSUREDCOUNT = #{insuredcount,jdbcType=VARCHAR},
+      </if>
+      <if test="organizername != null" >
+        ORGANIZERNAME = #{organizername,jdbcType=VARCHAR},
+      </if>
+      <if test="identifytype != null" >
+        IDENTIFYTYPE = #{identifytype,jdbcType=VARCHAR},
+      </if>
+      <if test="identifynumber != null" >
+        IDENTIFYNUMBER = #{identifynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        CONTACTNAME = #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        PHONENUMBER = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.Jg_GuPolicyMain" >
+    update JG_GUPOLICYMAIN
+    set PLANCODE = #{plancode,jdbcType=VARCHAR},
+      PROPOSALNO = #{proposalno,jdbcType=VARCHAR},
+      POLICYNO = #{policyno,jdbcType=VARCHAR},
+      RISKCODE = #{riskcode,jdbcType=VARCHAR},
+      CLASSCODE = #{classcode,jdbcType=VARCHAR},
+      INSURERCODE = #{insurercode,jdbcType=VARCHAR},
+      STARTDATE = #{startdate,jdbcType=DATE},
+      ENDDATE = #{enddate,jdbcType=DATE},
+      SIGNDATE = #{signdate,jdbcType=DATE},
+      SPREADSHEETPREMIUM = #{spreadsheetpremium,jdbcType=DECIMAL},
+      ACTUALPREMIUM = #{actualpremium,jdbcType=DECIMAL},
+      QUANTITY = #{quantity,jdbcType=DECIMAL},
+      PERSONPREMIUM = #{personpremium,jdbcType=DECIMAL},
+      SUMAMOUNT = #{sumamount,jdbcType=DECIMAL},
+      DISCOUNT = #{discount,jdbcType=DECIMAL},
+      SUMDISCOUNT = #{sumdiscount,jdbcType=DECIMAL},
+      SUMSUBPREM = #{sumsubprem,jdbcType=DECIMAL},
+      COUNTY = #{county,jdbcType=VARCHAR},
+      SPECIALPROVISIONS = #{specialprovisions,jdbcType=VARCHAR},
+      TOWN = #{town,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      ARGUESOLUTION = #{arguesolution,jdbcType=VARCHAR},
+      ARBITBOARDNAME = #{arbitboardname,jdbcType=VARCHAR},
+      ENDORSETIMES = #{endorsetimes,jdbcType=DECIMAL},
+      RENEWALFLAG = #{renewalflag,jdbcType=VARCHAR},
+      PREVIOUSPOLICYNO = #{previouspolicyno,jdbcType=VARCHAR},
+      PAYFLAG = #{payflag,jdbcType=VARCHAR},
+      PAYBILLNO = #{paybillno,jdbcType=VARCHAR},
+      MEMBERID = #{memberid,jdbcType=VARCHAR},
+      INPUTDATE = #{inputdate,jdbcType=DATE},
+      UNDERWRITECODE = #{underwritecode,jdbcType=VARCHAR},
+      UNDERWRITEENDDATE = #{underwriteenddate,jdbcType=DATE},
+      UNDERDIRECTIONS = #{underdirections,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      UPDATECODE = #{updatecode,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=DATE},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      VILLAGE = #{village,jdbcType=VARCHAR},
+      AGRICULTURECODE = #{agriculturecode,jdbcType=VARCHAR},
+      MEMBERNAME = #{membername,jdbcType=VARCHAR},
+      MEMBERADDRESS = #{memberaddress,jdbcType=VARCHAR},
+      IDENTITYNO = #{identityno,jdbcType=VARCHAR},
+      PLANTAREA = #{plantarea,jdbcType=VARCHAR},
+      CENTRALALLOWANCE = #{centralallowance,jdbcType=DECIMAL},
+      PROVINCEALLOWANCE = #{provinceallowance,jdbcType=DECIMAL},
+      CITYALLOWANCE = #{cityallowance,jdbcType=DECIMAL},
+      COUNTYALLOWANCE = #{countyallowance,jdbcType=DECIMAL},
+      PERSONALLOWANCE = #{personallowance,jdbcType=DECIMAL},
+      OHTERALLOWANCE = #{ohterallowance,jdbcType=DECIMAL},
+      ISPOOR = #{ispoor,jdbcType=VARCHAR},
+      FARMERTYPE = #{farmertype,jdbcType=VARCHAR},
+      INSUREDCOUNT = #{insuredcount,jdbcType=VARCHAR},
+      ORGANIZERNAME = #{organizername,jdbcType=VARCHAR},
+      IDENTIFYTYPE = #{identifytype,jdbcType=VARCHAR},
+      IDENTIFYNUMBER = #{identifynumber,jdbcType=VARCHAR},
+      CONTACTNAME = #{contactname,jdbcType=VARCHAR},
+      PHONENUMBER = #{phonenumber,jdbcType=VARCHAR}
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </update>
+</mapper>

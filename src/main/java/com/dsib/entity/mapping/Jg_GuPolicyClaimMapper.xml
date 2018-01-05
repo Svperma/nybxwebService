@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.Jg_GuPolicyClaimMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.Jg_GuPolicyClaim" >
+    <id column="BUSINESSNO" property="businessno" jdbcType="VARCHAR" />
+    <result column="RISKCODE" property="riskcode" jdbcType="VARCHAR" />
+    <result column="INSURERCODE" property="insurercode" jdbcType="VARCHAR" />
+    <result column="REPORTNO" property="reportno" jdbcType="VARCHAR" />
+    <result column="PEINO" property="peino" jdbcType="VARCHAR" />
+    <result column="POLICYNO" property="policyno" jdbcType="VARCHAR" />
+    <result column="SUPPERCODE" property="suppercode" jdbcType="CHAR" />
+    <result column="LOSSCAUSE" property="losscause" jdbcType="VARCHAR" />
+    <result column="LOSSLOCATION" property="losslocation" jdbcType="VARCHAR" />
+    <result column="LOSSDATE" property="lossdate" jdbcType="DATE" />
+    <result column="LOSSAMOUNT" property="lossamount" jdbcType="DECIMAL" />
+    <result column="ALLPAYAMOUNT" property="allpayamount" jdbcType="DECIMAL" />
+    <result column="ALLPAYDATE" property="allpaydate" jdbcType="DATE" />
+    <result column="LOSSSCALE" property="lossscale" jdbcType="DECIMAL" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="COUNTY" property="county" jdbcType="VARCHAR" />
+    <result column="TOWN" property="town" jdbcType="VARCHAR" />
+    <result column="VILLAGE" property="village" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="FLAG" property="flag" jdbcType="OTHER" />
+    <result column="REMARK" property="remark" jdbcType="OTHER" />
+    <result column="UPDATECODE" property="updatecode" jdbcType="VARCHAR" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="POLICYFLAG" property="policyflag" jdbcType="VARCHAR" />
+    <result column="ISPOOR" property="ispoor" jdbcType="VARCHAR" />
+    <result column="FARMERTYPE" property="farmertype" jdbcType="VARCHAR" />
+    <result column="MEMBERNAME" property="membername" jdbcType="VARCHAR" />
+    <result column="MEMBERADDRESS" property="memberaddress" jdbcType="VARCHAR" />
+    <result column="IDENTITYNO" property="identityno" jdbcType="VARCHAR" />
+    <result column="PHONENUMBER" property="phonenumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESSNO, RISKCODE, INSURERCODE, REPORTNO, PEINO, POLICYNO, SUPPERCODE, LOSSCAUSE, 
+    LOSSLOCATION, LOSSDATE, LOSSAMOUNT, ALLPAYAMOUNT, ALLPAYDATE, LOSSSCALE, PROVINCE, 
+    CITY, COUNTY, TOWN, VILLAGE, STATUS, FLAG, REMARK, UPDATECODE, UPDATETIME, POLICYFLAG, 
+    ISPOOR, FARMERTYPE, MEMBERNAME, MEMBERADDRESS, IDENTITYNO, PHONENUMBER
+  </sql>
+  <select id="findByReportNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from JG_GUPOLICYCLAIM
+    where REPORTNO = #{reportno,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from JG_GUPOLICYCLAIM
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByReportNo" parameterType="java.lang.String" >
+    delete from JG_GUPOLICYCLAIM
+    where REPORTNO = #{reportNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from JG_GUPOLICYCLAIM
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.Jg_GuPolicyClaim" >
+    insert into JG_GUPOLICYCLAIM (BUSINESSNO, RISKCODE, INSURERCODE, 
+      REPORTNO, PEINO, POLICYNO, 
+      SUPPERCODE, LOSSCAUSE, LOSSLOCATION, 
+      LOSSDATE, LOSSAMOUNT, ALLPAYAMOUNT, 
+      ALLPAYDATE, LOSSSCALE, PROVINCE, 
+      CITY, COUNTY, TOWN, 
+      VILLAGE, STATUS, FLAG, 
+      REMARK, UPDATECODE, UPDATETIME, 
+      POLICYFLAG, ISPOOR, FARMERTYPE, 
+      MEMBERNAME, MEMBERADDRESS, IDENTITYNO, 
+      PHONENUMBER)
+    values (#{businessno,jdbcType=VARCHAR}, #{riskcode,jdbcType=VARCHAR}, #{insurercode,jdbcType=VARCHAR}, 
+      #{reportno,jdbcType=VARCHAR}, #{peino,jdbcType=VARCHAR}, #{policyno,jdbcType=VARCHAR}, 
+      #{suppercode,jdbcType=CHAR}, #{losscause,jdbcType=VARCHAR}, #{losslocation,jdbcType=VARCHAR}, 
+      #{lossdate,jdbcType=DATE}, #{lossamount,jdbcType=DECIMAL}, #{allpayamount,jdbcType=DECIMAL}, 
+      #{allpaydate,jdbcType=DATE}, #{lossscale,jdbcType=DECIMAL}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{town,jdbcType=VARCHAR}, 
+      #{village,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{flag,jdbcType=OTHER}, 
+      #{remark,jdbcType=OTHER}, #{updatecode,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{policyflag,jdbcType=VARCHAR}, #{ispoor,jdbcType=VARCHAR}, #{farmertype,jdbcType=VARCHAR}, 
+      #{membername,jdbcType=VARCHAR}, #{memberaddress,jdbcType=VARCHAR}, #{identityno,jdbcType=VARCHAR}, 
+      #{phonenumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.Jg_GuPolicyClaim" >
+    insert into JG_GUPOLICYCLAIM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessno != null" >
+        BUSINESSNO,
+      </if>
+      <if test="riskcode != null" >
+        RISKCODE,
+      </if>
+      <if test="insurercode != null" >
+        INSURERCODE,
+      </if>
+      <if test="reportno != null" >
+        REPORTNO,
+      </if>
+      <if test="peino != null" >
+        PEINO,
+      </if>
+      <if test="policyno != null" >
+        POLICYNO,
+      </if>
+      <if test="suppercode != null" >
+        SUPPERCODE,
+      </if>
+      <if test="losscause != null" >
+        LOSSCAUSE,
+      </if>
+      <if test="losslocation != null" >
+        LOSSLOCATION,
+      </if>
+      <if test="lossdate != null" >
+        LOSSDATE,
+      </if>
+      <if test="lossamount != null" >
+        LOSSAMOUNT,
+      </if>
+      <if test="allpayamount != null" >
+        ALLPAYAMOUNT,
+      </if>
+      <if test="allpaydate != null" >
+        ALLPAYDATE,
+      </if>
+      <if test="lossscale != null" >
+        LOSSSCALE,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="county != null" >
+        COUNTY,
+      </if>
+      <if test="town != null" >
+        TOWN,
+      </if>
+      <if test="village != null" >
+        VILLAGE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="updatecode != null" >
+        UPDATECODE,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+      <if test="policyflag != null" >
+        POLICYFLAG,
+      </if>
+      <if test="ispoor != null" >
+        ISPOOR,
+      </if>
+      <if test="farmertype != null" >
+        FARMERTYPE,
+      </if>
+      <if test="membername != null" >
+        MEMBERNAME,
+      </if>
+      <if test="memberaddress != null" >
+        MEMBERADDRESS,
+      </if>
+      <if test="identityno != null" >
+        IDENTITYNO,
+      </if>
+      <if test="phonenumber != null" >
+        PHONENUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessno != null" >
+        #{businessno,jdbcType=VARCHAR},
+      </if>
+      <if test="riskcode != null" >
+        #{riskcode,jdbcType=VARCHAR},
+      </if>
+      <if test="insurercode != null" >
+        #{insurercode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportno != null" >
+        #{reportno,jdbcType=VARCHAR},
+      </if>
+      <if test="peino != null" >
+        #{peino,jdbcType=VARCHAR},
+      </if>
+      <if test="policyno != null" >
+        #{policyno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppercode != null" >
+        #{suppercode,jdbcType=CHAR},
+      </if>
+      <if test="losscause != null" >
+        #{losscause,jdbcType=VARCHAR},
+      </if>
+      <if test="losslocation != null" >
+        #{losslocation,jdbcType=VARCHAR},
+      </if>
+      <if test="lossdate != null" >
+        #{lossdate,jdbcType=DATE},
+      </if>
+      <if test="lossamount != null" >
+        #{lossamount,jdbcType=DECIMAL},
+      </if>
+      <if test="allpayamount != null" >
+        #{allpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="allpaydate != null" >
+        #{allpaydate,jdbcType=DATE},
+      </if>
+      <if test="lossscale != null" >
+        #{lossscale,jdbcType=DECIMAL},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=OTHER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=OTHER},
+      </if>
+      <if test="updatecode != null" >
+        #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyflag != null" >
+        #{policyflag,jdbcType=VARCHAR},
+      </if>
+      <if test="ispoor != null" >
+        #{ispoor,jdbcType=VARCHAR},
+      </if>
+      <if test="farmertype != null" >
+        #{farmertype,jdbcType=VARCHAR},
+      </if>
+      <if test="membername != null" >
+        #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberaddress != null" >
+        #{memberaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identityno != null" >
+        #{identityno,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.Jg_GuPolicyClaim" >
+    update JG_GUPOLICYCLAIM
+    <set >
+      <if test="riskcode != null" >
+        RISKCODE = #{riskcode,jdbcType=VARCHAR},
+      </if>
+      <if test="insurercode != null" >
+        INSURERCODE = #{insurercode,jdbcType=VARCHAR},
+      </if>
+      <if test="reportno != null" >
+        REPORTNO = #{reportno,jdbcType=VARCHAR},
+      </if>
+      <if test="peino != null" >
+        PEINO = #{peino,jdbcType=VARCHAR},
+      </if>
+      <if test="policyno != null" >
+        POLICYNO = #{policyno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppercode != null" >
+        SUPPERCODE = #{suppercode,jdbcType=CHAR},
+      </if>
+      <if test="losscause != null" >
+        LOSSCAUSE = #{losscause,jdbcType=VARCHAR},
+      </if>
+      <if test="losslocation != null" >
+        LOSSLOCATION = #{losslocation,jdbcType=VARCHAR},
+      </if>
+      <if test="lossdate != null" >
+        LOSSDATE = #{lossdate,jdbcType=DATE},
+      </if>
+      <if test="lossamount != null" >
+        LOSSAMOUNT = #{lossamount,jdbcType=DECIMAL},
+      </if>
+      <if test="allpayamount != null" >
+        ALLPAYAMOUNT = #{allpayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="allpaydate != null" >
+        ALLPAYDATE = #{allpaydate,jdbcType=DATE},
+      </if>
+      <if test="lossscale != null" >
+        LOSSSCALE = #{lossscale,jdbcType=DECIMAL},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        COUNTY = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        TOWN = #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        VILLAGE = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=OTHER},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=OTHER},
+      </if>
+      <if test="updatecode != null" >
+        UPDATECODE = #{updatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyflag != null" >
+        POLICYFLAG = #{policyflag,jdbcType=VARCHAR},
+      </if>
+      <if test="ispoor != null" >
+        ISPOOR = #{ispoor,jdbcType=VARCHAR},
+      </if>
+      <if test="farmertype != null" >
+        FARMERTYPE = #{farmertype,jdbcType=VARCHAR},
+      </if>
+      <if test="membername != null" >
+        MEMBERNAME = #{membername,jdbcType=VARCHAR},
+      </if>
+      <if test="memberaddress != null" >
+        MEMBERADDRESS = #{memberaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identityno != null" >
+        IDENTITYNO = #{identityno,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        PHONENUMBER = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.Jg_GuPolicyClaim" >
+    update JG_GUPOLICYCLAIM
+    set RISKCODE = #{riskcode,jdbcType=VARCHAR},
+      INSURERCODE = #{insurercode,jdbcType=VARCHAR},
+      REPORTNO = #{reportno,jdbcType=VARCHAR},
+      PEINO = #{peino,jdbcType=VARCHAR},
+      POLICYNO = #{policyno,jdbcType=VARCHAR},
+      SUPPERCODE = #{suppercode,jdbcType=CHAR},
+      LOSSCAUSE = #{losscause,jdbcType=VARCHAR},
+      LOSSLOCATION = #{losslocation,jdbcType=VARCHAR},
+      LOSSDATE = #{lossdate,jdbcType=DATE},
+      LOSSAMOUNT = #{lossamount,jdbcType=DECIMAL},
+      ALLPAYAMOUNT = #{allpayamount,jdbcType=DECIMAL},
+      ALLPAYDATE = #{allpaydate,jdbcType=DATE},
+      LOSSSCALE = #{lossscale,jdbcType=DECIMAL},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      COUNTY = #{county,jdbcType=VARCHAR},
+      TOWN = #{town,jdbcType=VARCHAR},
+      VILLAGE = #{village,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=OTHER},
+      REMARK = #{remark,jdbcType=OTHER},
+      UPDATECODE = #{updatecode,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      POLICYFLAG = #{policyflag,jdbcType=VARCHAR},
+      ISPOOR = #{ispoor,jdbcType=VARCHAR},
+      FARMERTYPE = #{farmertype,jdbcType=VARCHAR},
+      MEMBERNAME = #{membername,jdbcType=VARCHAR},
+      MEMBERADDRESS = #{memberaddress,jdbcType=VARCHAR},
+      IDENTITYNO = #{identityno,jdbcType=VARCHAR},
+      PHONENUMBER = #{phonenumber,jdbcType=VARCHAR}
+    where BUSINESSNO = #{businessno,jdbcType=VARCHAR}
+  </update>
+</mapper>

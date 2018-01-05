@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.dao.DetailedListMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.entity.DetailedList" >
+    <id column="BUSINESS_NO" property="businessNo" jdbcType="VARCHAR" />
+    <id column="INSURED_CODE" property="insuredCode" jdbcType="VARCHAR" />
+    <result column="CHECK_TYPE" property="checkType" jdbcType="VARCHAR" />
+    <result column="CHECK_FLAG" property="checkFlag" jdbcType="VARCHAR" />
+    <result column="POLICY_NO" property="policyNo" jdbcType="VARCHAR" />
+    <result column="REPORT_NO" property="reportNo" jdbcType="VARCHAR" />
+    <result column="INSURED_NAME" property="insuredName" jdbcType="VARCHAR" />
+    <result column="INSURED_ADDRESS" property="insuredAddress" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_TYPE" property="identifyType" jdbcType="VARCHAR" />
+    <result column="IDENTIFY_NUMBER" property="identifyNumber" jdbcType="VARCHAR" />
+    <result column="PHONE_NUMBER" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="FARMER_TYPE" property="farmerType" jdbcType="VARCHAR" />
+    <result column="IS_POOR" property="isPoor" jdbcType="VARCHAR" />
+    <result column="INSURED_QUANTITY" property="insuredQuantity" jdbcType="VARCHAR" />
+    <result column="BANK" property="bank" jdbcType="VARCHAR" />
+    <result column="CARD_NO" property="cardNo" jdbcType="VARCHAR" />
+    <result column="AMOUNT" property="amount" jdbcType="VARCHAR" />
+    <result column="PREMIUM" property="premium" jdbcType="VARCHAR" />
+    <result column="CENTRAL_ALLOWANCE" property="centralAllowance" jdbcType="VARCHAR" />
+    <result column="PROVINCE_ALLOWANCE" property="provinceAllowance" jdbcType="VARCHAR" />
+    <result column="CITY_ALLOWANCE" property="cityAllowance" jdbcType="VARCHAR" />
+    <result column="COUNTY_ALLOWANCE" property="countyAllowance" jdbcType="VARCHAR" />
+    <result column="PERSON_ALLOWANCE" property="personAllowance" jdbcType="VARCHAR" />
+    <result column="OHTER_ALLOWANCE" property="ohterAllowance" jdbcType="VARCHAR" />
+    <result column="COMPENSATION_AMOUNT" property="compensationAmount" jdbcType="VARCHAR" />
+    <result column="COMPENSATION" property="compensation" jdbcType="VARCHAR" />
+    <result column="COMPENSATION_QUANTITY" property="compensationQuantity" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BUSINESS_NO, INSURED_CODE, CHECK_TYPE, CHECK_FLAG, POLICY_NO, REPORT_NO, INSURED_NAME, 
+    INSURED_ADDRESS, IDENTIFY_TYPE, IDENTIFY_NUMBER, PHONE_NUMBER, FARMER_TYPE, IS_POOR, 
+    INSURED_QUANTITY, BANK, CARD_NO, AMOUNT, PREMIUM, CENTRAL_ALLOWANCE, PROVINCE_ALLOWANCE, 
+    CITY_ALLOWANCE, COUNTY_ALLOWANCE, PERSON_ALLOWANCE, OHTER_ALLOWANCE, COMPENSATION_AMOUNT, 
+    COMPENSATION, COMPENSATION_QUANTITY
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dsib.entity.DetailedListKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from DETAILED_LIST
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dsib.entity.DetailedListKey" >
+    delete from DETAILED_LIST
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.entity.DetailedList" >
+    insert into DETAILED_LIST (BUSINESS_NO, INSURED_CODE, CHECK_TYPE, 
+      CHECK_FLAG, POLICY_NO, REPORT_NO, 
+      INSURED_NAME, INSURED_ADDRESS, IDENTIFY_TYPE, 
+      IDENTIFY_NUMBER, PHONE_NUMBER, FARMER_TYPE, 
+      IS_POOR, INSURED_QUANTITY, BANK, 
+      CARD_NO, AMOUNT, PREMIUM, 
+      CENTRAL_ALLOWANCE, PROVINCE_ALLOWANCE, CITY_ALLOWANCE, 
+      COUNTY_ALLOWANCE, PERSON_ALLOWANCE, OHTER_ALLOWANCE, 
+      COMPENSATION_AMOUNT, COMPENSATION, COMPENSATION_QUANTITY
+      )
+    values (#{businessNo,jdbcType=VARCHAR}, #{insuredCode,jdbcType=VARCHAR}, #{checkType,jdbcType=VARCHAR}, 
+      #{checkFlag,jdbcType=VARCHAR}, #{policyNo,jdbcType=VARCHAR}, #{reportNo,jdbcType=VARCHAR}, 
+      #{insuredName,jdbcType=VARCHAR}, #{insuredAddress,jdbcType=VARCHAR}, #{identifyType,jdbcType=VARCHAR}, 
+      #{identifyNumber,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{farmerType,jdbcType=VARCHAR}, 
+      #{isPoor,jdbcType=VARCHAR}, #{insuredQuantity,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, 
+      #{cardNo,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, #{premium,jdbcType=VARCHAR}, 
+      #{centralAllowance,jdbcType=VARCHAR}, #{provinceAllowance,jdbcType=VARCHAR}, #{cityAllowance,jdbcType=VARCHAR}, 
+      #{countyAllowance,jdbcType=VARCHAR}, #{personAllowance,jdbcType=VARCHAR}, #{ohterAllowance,jdbcType=VARCHAR}, 
+      #{compensationAmount,jdbcType=VARCHAR}, #{compensation,jdbcType=VARCHAR}, #{compensationQuantity,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.entity.DetailedList" >
+    insert into DETAILED_LIST
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        BUSINESS_NO,
+      </if>
+      <if test="insuredCode != null" >
+        INSURED_CODE,
+      </if>
+      <if test="checkType != null" >
+        CHECK_TYPE,
+      </if>
+      <if test="checkFlag != null" >
+        CHECK_FLAG,
+      </if>
+      <if test="policyNo != null" >
+        POLICY_NO,
+      </if>
+      <if test="reportNo != null" >
+        REPORT_NO,
+      </if>
+      <if test="insuredName != null" >
+        INSURED_NAME,
+      </if>
+      <if test="insuredAddress != null" >
+        INSURED_ADDRESS,
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE,
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER,
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER,
+      </if>
+      <if test="farmerType != null" >
+        FARMER_TYPE,
+      </if>
+      <if test="isPoor != null" >
+        IS_POOR,
+      </if>
+      <if test="insuredQuantity != null" >
+        INSURED_QUANTITY,
+      </if>
+      <if test="bank != null" >
+        BANK,
+      </if>
+      <if test="cardNo != null" >
+        CARD_NO,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="premium != null" >
+        PREMIUM,
+      </if>
+      <if test="centralAllowance != null" >
+        CENTRAL_ALLOWANCE,
+      </if>
+      <if test="provinceAllowance != null" >
+        PROVINCE_ALLOWANCE,
+      </if>
+      <if test="cityAllowance != null" >
+        CITY_ALLOWANCE,
+      </if>
+      <if test="countyAllowance != null" >
+        COUNTY_ALLOWANCE,
+      </if>
+      <if test="personAllowance != null" >
+        PERSON_ALLOWANCE,
+      </if>
+      <if test="ohterAllowance != null" >
+        OHTER_ALLOWANCE,
+      </if>
+      <if test="compensationAmount != null" >
+        COMPENSATION_AMOUNT,
+      </if>
+      <if test="compensation != null" >
+        COMPENSATION,
+      </if>
+      <if test="compensationQuantity != null" >
+        COMPENSATION_QUANTITY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCode != null" >
+        #{insuredCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkType != null" >
+        #{checkType,jdbcType=VARCHAR},
+      </if>
+      <if test="checkFlag != null" >
+        #{checkFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reportNo != null" >
+        #{reportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredAddress != null" >
+        #{insuredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerType != null" >
+        #{farmerType,jdbcType=VARCHAR},
+      </if>
+      <if test="isPoor != null" >
+        #{isPoor,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredQuantity != null" >
+        #{insuredQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null" >
+        #{premium,jdbcType=VARCHAR},
+      </if>
+      <if test="centralAllowance != null" >
+        #{centralAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceAllowance != null" >
+        #{provinceAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="cityAllowance != null" >
+        #{cityAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="countyAllowance != null" >
+        #{countyAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="personAllowance != null" >
+        #{personAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="ohterAllowance != null" >
+        #{ohterAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="compensationAmount != null" >
+        #{compensationAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="compensation != null" >
+        #{compensation,jdbcType=VARCHAR},
+      </if>
+      <if test="compensationQuantity != null" >
+        #{compensationQuantity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.entity.DetailedList" >
+    update DETAILED_LIST
+    <set >
+      <if test="checkType != null" >
+        CHECK_TYPE = #{checkType,jdbcType=VARCHAR},
+      </if>
+      <if test="checkFlag != null" >
+        CHECK_FLAG = #{checkFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reportNo != null" >
+        REPORT_NO = #{reportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredAddress != null" >
+        INSURED_ADDRESS = #{insuredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyType != null" >
+        IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyNumber != null" >
+        IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerType != null" >
+        FARMER_TYPE = #{farmerType,jdbcType=VARCHAR},
+      </if>
+      <if test="isPoor != null" >
+        IS_POOR = #{isPoor,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredQuantity != null" >
+        INSURED_QUANTITY = #{insuredQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        BANK = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        CARD_NO = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null" >
+        PREMIUM = #{premium,jdbcType=VARCHAR},
+      </if>
+      <if test="centralAllowance != null" >
+        CENTRAL_ALLOWANCE = #{centralAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceAllowance != null" >
+        PROVINCE_ALLOWANCE = #{provinceAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="cityAllowance != null" >
+        CITY_ALLOWANCE = #{cityAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="countyAllowance != null" >
+        COUNTY_ALLOWANCE = #{countyAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="personAllowance != null" >
+        PERSON_ALLOWANCE = #{personAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="ohterAllowance != null" >
+        OHTER_ALLOWANCE = #{ohterAllowance,jdbcType=VARCHAR},
+      </if>
+      <if test="compensationAmount != null" >
+        COMPENSATION_AMOUNT = #{compensationAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="compensation != null" >
+        COMPENSATION = #{compensation,jdbcType=VARCHAR},
+      </if>
+      <if test="compensationQuantity != null" >
+        COMPENSATION_QUANTITY = #{compensationQuantity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.entity.DetailedList" >
+    update DETAILED_LIST
+    set CHECK_TYPE = #{checkType,jdbcType=VARCHAR},
+      CHECK_FLAG = #{checkFlag,jdbcType=VARCHAR},
+      POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      REPORT_NO = #{reportNo,jdbcType=VARCHAR},
+      INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      INSURED_ADDRESS = #{insuredAddress,jdbcType=VARCHAR},
+      IDENTIFY_TYPE = #{identifyType,jdbcType=VARCHAR},
+      IDENTIFY_NUMBER = #{identifyNumber,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      FARMER_TYPE = #{farmerType,jdbcType=VARCHAR},
+      IS_POOR = #{isPoor,jdbcType=VARCHAR},
+      INSURED_QUANTITY = #{insuredQuantity,jdbcType=VARCHAR},
+      BANK = #{bank,jdbcType=VARCHAR},
+      CARD_NO = #{cardNo,jdbcType=VARCHAR},
+      AMOUNT = #{amount,jdbcType=VARCHAR},
+      PREMIUM = #{premium,jdbcType=VARCHAR},
+      CENTRAL_ALLOWANCE = #{centralAllowance,jdbcType=VARCHAR},
+      PROVINCE_ALLOWANCE = #{provinceAllowance,jdbcType=VARCHAR},
+      CITY_ALLOWANCE = #{cityAllowance,jdbcType=VARCHAR},
+      COUNTY_ALLOWANCE = #{countyAllowance,jdbcType=VARCHAR},
+      PERSON_ALLOWANCE = #{personAllowance,jdbcType=VARCHAR},
+      OHTER_ALLOWANCE = #{ohterAllowance,jdbcType=VARCHAR},
+      COMPENSATION_AMOUNT = #{compensationAmount,jdbcType=VARCHAR},
+      COMPENSATION = #{compensation,jdbcType=VARCHAR},
+      COMPENSATION_QUANTITY = #{compensationQuantity,jdbcType=VARCHAR}
+    where BUSINESS_NO = #{businessNo,jdbcType=VARCHAR}
+      and INSURED_CODE = #{insuredCode,jdbcType=VARCHAR}
+  </update>
+</mapper>
